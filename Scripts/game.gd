@@ -23,12 +23,7 @@ func new_game():
 	$Ship.reset()
 	
 func _Tastenabfrage(delta):
-	if not game_over and (Input.is_action_just_pressed("flying") or Input.is_action_just_pressed("Schießen")):
-		if not game_running:
-			start_game()
-		if $Ship.flying:
-			$Ship.ship()  # besser wäre: $Ship.flap() oder $Ship.jump()
-			check_top()
+	pass
 
 
 func start_game():

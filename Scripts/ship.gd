@@ -8,8 +8,11 @@ var falling : bool = false
 const Start_Pos = Vector2(100, 100)
 var projectile_path = preload("res://Scenes/projectile.tscn")
 # Called when the node enters the scene tree for the first time.
+
+@onready var parent = get_parent()
 func _ready():
 	reset()
+	
 
 func reset():
 	falling = false
@@ -19,8 +22,17 @@ func reset():
 	
 # Called every frame. 'delta' is the elapsed since the previous frame.
 func _physics_process(delta: float) -> void:
+	
 	if Input.is_action_just_pressed("Schießen"):
 		fire()
+	if not parent.game_over and (Input.is_action_just_pressed("flying")  ):
+		if not parent.game_running:
+			parent. start_game()
+		if flying:
+			ship()  # besser wäre: $Ship.flap() oder $Ship.jump()
+			parent.check_top()	
+		
+		
 	if flying or falling:
 		velocity.y += Gravity * delta
 		# terminal velocity
@@ -29,6 +41,7 @@ func _physics_process(delta: float) -> void:
 		if flying:
 			set_rotation(deg_to_rad(velocity.y * 0.05))
 			$AnimatedSprite2D.play()
+			#flying = false
 		move_and_collide(velocity * delta)
 	else:
 		$AnimatedSprite2D.stop()
