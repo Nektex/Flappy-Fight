@@ -1,34 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://dguh7yfy1apkm"]
+[gd_scene load_steps=9 format=3 uid="uid://dguh7yfy1apkm"]
 
 [ext_resource type="Script" uid="uid://kwia0xqdrfsx" path="res://Scripts/ship.gd" id="1_4qyt1"]
-[ext_resource type="Texture2D" uid="uid://ryn1tp1hyp4g" path="res://assets/Characters/top-down-shooter-ship/spritesheets/yellow/ship-01.png" id="1_78pfh"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4qyt1"]
-atlas = ExtResource("1_78pfh")
-region = Rect2(0, 0, 48, 48)
+[ext_resource type="Texture2D" uid="uid://cj46m52e56eje" path="res://assets/benutzen/benutzen/spaceship-unit/Spritesheets/separated sprites/spaceship-unit.png" id="2_4qyt1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxxu3"]
-atlas = ExtResource("1_78pfh")
-region = Rect2(0, 48, 48, 48)
+atlas = ExtResource("2_4qyt1")
+region = Rect2(0, 0, 106, 77)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ejuo"]
-atlas = ExtResource("1_78pfh")
-region = Rect2(0, 96, 48, 48)
+atlas = ExtResource("2_4qyt1")
+region = Rect2(106, 0, 106, 77)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8aq7e"]
-atlas = ExtResource("1_78pfh")
-region = Rect2(0, 144, 48, 48)
+atlas = ExtResource("2_4qyt1")
+region = Rect2(212, 0, 106, 77)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cmder"]
-atlas = ExtResource("1_78pfh")
-region = Rect2(0, 192, 48, 48)
+atlas = ExtResource("2_4qyt1")
+region = Rect2(318, 0, 106, 77)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fwcnm"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4qyt1")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xxxu3")
 }, {
@@ -42,24 +35,22 @@ animations = [{
 "texture": SubResource("AtlasTexture_cmder")
 }],
 "loop": true,
-"name": &"driving",
+"name": &"default",
 "speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxdp2"]
-radius = 11.0
+radius = 50.0
 
 [node name="Ship" type="CharacterBody2D"]
 script = ExtResource("1_4qyt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwcnm")
-animation = &"driving"
-autoplay = "driving"
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 0)
 shape = SubResource("CircleShape2D_kxdp2")
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(17, 0)
+position = Vector2(84, 0)

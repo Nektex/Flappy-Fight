@@ -22,16 +22,14 @@ func new_game():
 	scroll = 0
 	$Ship.reset()
 	
-func _input(event):
-	if game_over == false:
-		if event is InputEventMouseButton:
-			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-				if game_running == false:
-					start_game()
-				else:
-					if $Ship.flying:
-						$Ship.ship()
-						check_top()
+func _Tastenabfrage(delta):
+	if not game_over and (Input.is_action_just_pressed("flying") or Input.is_action_just_pressed("Schießen")):
+		if not game_running:
+			start_game()
+		if $Ship.flying:
+			$Ship.ship()  # besser wäre: $Ship.flap() oder $Ship.jump()
+			check_top()
+
 
 func start_game():
 	game_running = true
@@ -39,6 +37,7 @@ func start_game():
 	$Ship.ship()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	_Tastenabfrage(delta)
 	if game_running:
 			scroll += Scroll_Speed
 			# reset scroll

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chaoeftun6bh4"
+path="res://.godot/imported/shot 1.wav-16fb7fb018adb5e5709b678c13b92f97.sample"
+
+[deps]
+
+source_file="res://assets/benutzen/benutzen/Sound FX/shot 1.wav"
+dest_files=["res://.godot/imported/shot 1.wav-16fb7fb018adb5e5709b678c13b92f97.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
