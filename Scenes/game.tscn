@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://84w7invv0vwx"]
+[gd_scene load_steps=8 format=3 uid="uid://84w7invv0vwx"]
 
 [ext_resource type="PackedScene" uid="uid://dguh7yfy1apkm" path="res://Scenes/ship.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://brrco7qnd15cd" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://nr4ehqvkobfx" path="res://assets/Environments/space_background_pack/Blue Version/bg.png" id="2_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://b4xa63ctxwts8" path="res://Scenes/ground.tscn" id="4_3dryh"]
 [ext_resource type="Script" uid="uid://dyyvf4c8fuusx" path="res://Scripts/enemy_spawner.gd" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://bxv0hwgli6e5b" path="res://Scenes/killzone.tscn" id="6_i6g32"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1l0tm"]
+distance = -76.0
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_wrm1d")
@@ -23,3 +27,10 @@ position = Vector2(-48, -100)
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(826, -15)
 script = ExtResource("5_wowpa")
+
+[node name="Killzone" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(37, 408)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("WorldBoundaryShape2D_1l0tm")
+one_way_collision_margin = 0.0
