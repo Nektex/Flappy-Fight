@@ -67,11 +67,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Enemy" type="AnimatedSprite2D"]
-position = Vector2(256.75, 134)
+[node name="Enemy" type="Node2D"]
 scale = Vector2(1.76506, 1.90625)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_po0sg")
 autoplay = "default"
-frame = 2
-frame_progress = 0.840304
 script = ExtResource("2_1f0kj")
