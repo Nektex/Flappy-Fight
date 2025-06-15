@@ -8,18 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://bxv0hwgli6e5b" path="res://Scenes/killzone.tscn" id="6_i6g32"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1l0tm"]
-distance = -76.0
+distance = -75.0
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_wrm1d")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(-26, -139)
+position = Vector2(-26, -166.3)
+scale = Vector2(1, 1.04375)
 texture = ExtResource("2_wrm1d")
 offset = Vector2(432, 384)
 
 [node name="Ship" parent="." instance=ExtResource("1_ebmjs")]
-position = Vector2(83, 316)
+position = Vector2(82, 354)
 
 [node name="ground" parent="." instance=ExtResource("4_3dryh")]
 position = Vector2(-48, -100)
@@ -29,7 +30,7 @@ position = Vector2(826, -15)
 script = ExtResource("5_wowpa")
 
 [node name="Killzone" parent="." instance=ExtResource("6_i6g32")]
-position = Vector2(37, 408)
+position = Vector2(-38, 412)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_1l0tm")

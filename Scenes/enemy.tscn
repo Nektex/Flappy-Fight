@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dt7mc8baph1b2"]
+[gd_scene load_steps=13 format=3 uid="uid://dt7mc8baph1b2"]
 
 [ext_resource type="Texture2D" uid="uid://ewqq6xtf62rf" path="res://assets/Characters/alien-flying-enemy/spritesheet.png" id="1_hghv2"]
 [ext_resource type="Script" uid="uid://fn4ebg6dp55x" path="res://Scripts/enemy.gd" id="2_1f0kj"]
@@ -67,11 +67,24 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Enemy" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1f0kj"]
+radius = 14.1638
+height = 28.3277
+
+[node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(1.76506, 1.90625)
+script = ExtResource("2_1f0kj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-40.2253, -37.2459)
 sprite_frames = SubResource("SpriteFrames_po0sg")
 autoplay = "default"
 centered = false
-script = ExtResource("2_1f0kj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.69966, 2.09836)
+shape = SubResource("CapsuleShape2D_1f0kj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

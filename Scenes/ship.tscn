@@ -43,14 +43,13 @@ animations = [{
 radius = 50.0
 
 [node name="Ship" type="CharacterBody2D"]
-collision_mask = 2
 script = ExtResource("1_4qyt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fwcnm")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="shipcollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kxdp2")
 
 [node name="Node2D" type="Node2D" parent="."]

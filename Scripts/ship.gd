@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+
 const Gravity : int = 1000
 const Max_Vel : int = 600
 const Ship_Speed : int = -500
@@ -12,7 +14,7 @@ var projectile_path = preload("res://Scenes/projectile.tscn")
 @onready var parent = get_parent()
 func _ready():
 	reset()
-	
+
 
 func reset():
 	falling = false
@@ -35,14 +37,18 @@ func _physics_process(delta: float) -> void:
 		
 	if flying or falling:
 		velocity.y += Gravity * delta
-		# terminal velocity
 		if velocity.y > Max_Vel:
 			velocity.y = Max_Vel
 		if flying:
 			set_rotation(deg_to_rad(velocity.y * 0.05))
 			$AnimatedSprite2D.play()
-			#flying = false
-		move_and_collide(velocity * delta)
+		var collision = move_and_collide(velocity * delta)
+		if collision:
+			var collider = collision.get_collider()
+			if collider.name == "Enemy":
+				print("Ship getroffen!")
+				get_tree().reload_current_scene()
+				parent.game_over = true
 	else:
 		$AnimatedSprite2D.stop()
 		
