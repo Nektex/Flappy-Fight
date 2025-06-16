@@ -24,4 +24,5 @@ func _process(delta):
 func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
 	enemy.position = Vector2(800, randi() % 400 + 25)  # x=800 (rechter Bildschirmrand), y zufällig
+	enemy.add_to_group("enemies")
 	get_tree().current_scene.add_child(enemy)

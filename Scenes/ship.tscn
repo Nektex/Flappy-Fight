@@ -39,8 +39,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kxdp2"]
-radius = 50.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_4qyt1"]
+radius = 37.5832
 
 [node name="Ship" type="CharacterBody2D"]
 script = ExtResource("1_4qyt1")
@@ -50,7 +50,8 @@ sprite_frames = SubResource("SpriteFrames_fwcnm")
 autoplay = "default"
 
 [node name="shipcollider" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_kxdp2")
+position = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_4qyt1")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(84, 0)

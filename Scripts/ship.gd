@@ -1,40 +1,36 @@
 extends CharacterBody2D
 
-
-
-const Gravity : int = 1000
-const Max_Vel : int = 600
-const Ship_Speed : int = -500
-var flying : bool = false
-var falling : bool = false
+const Gravity: int = 1000
+const Max_Vel: int = 600
+const Ship_Speed: int = -500
+var flying: bool = false
+var falling: bool = false
 const Start_Pos = Vector2(100, 100)
+
 var projectile_path = preload("res://Scenes/projectile.tscn")
-# Called when the node enters the scene tree for the first time.
 
 @onready var parent = get_parent()
+
 func _ready():
 	reset()
-
 
 func reset():
 	falling = false
 	flying = false
 	position = Start_Pos
 	set_rotation(0)
-	
-# Called every frame. 'delta' is the elapsed since the previous frame.
+
 func _physics_process(delta: float) -> void:
-	
 	if Input.is_action_just_pressed("Schießen"):
 		fire()
-	if not parent.game_over and (Input.is_action_just_pressed("flying")  ):
+
+	if not parent.game_over and Input.is_action_just_pressed("flying"):
 		if not parent.game_running:
-			parent. start_game()
+			parent.start_game()
 		if flying:
-			ship()  # besser wäre: $Ship.flap() oder $Ship.jump()
-			parent.check_top()	
-		
-		
+			ship()
+			parent.check_top()
+
 	if flying or falling:
 		velocity.y += Gravity * delta
 		if velocity.y > Max_Vel:
@@ -42,15 +38,24 @@ func _physics_process(delta: float) -> void:
 		if flying:
 			set_rotation(deg_to_rad(velocity.y * 0.05))
 			$AnimatedSprite2D.play()
-		var collision = move_and_collide(velocity * delta)
-		if collision:
+
+		# Bewegung durchführen
+		move_and_slide()
+
+		# Alle Kollisionen prüfen
+		for i in range(get_slide_collision_count()):
+			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
-			if collider.name == "Enemy":
-				print("Ship getroffen!")
-				get_tree().reload_current_scene()
+			if collider and collider.is_in_group("enemies") and not parent.game_over:
 				parent.game_over = true
+				print("Ship zerstört")
+				call_deferred("reload_scene")
+				break
 	else:
 		$AnimatedSprite2D.stop()
+
+func reload_scene():
+	get_tree().reload_current_scene()
 		
 func ship():
 	velocity.y = Ship_Speed
