@@ -8,8 +8,9 @@ func _ready():
 	global_position=pos
 	global_rotation=rota
 
+# projectile.gd
 func _physics_process(delta):
-	velocity=Vector2(speed,0).rotated(dir)
+	velocity = Vector2(speed, 0).rotated(dir)
 	move_and_slide()
 
 	for i in range(get_slide_collision_count()):
@@ -17,6 +18,12 @@ func _physics_process(delta):
 		var collider = collision.get_collider()
 		if collider and collider.is_in_group("enemies"):
 			if collider.has_method("on_hit"):
-				collider.on_hit()
+				var destroyed = collider.on_hit()
+				if destroyed:
+					var game = get_tree().get_root().get_node("game")
+					if game:
+						game.score += 1
+						game.update_score_label()
+						print("Score erhöht! Neuer Score:", game.score)
 			queue_free()  # Projektil verschwindet nach dem Treffer
 			break

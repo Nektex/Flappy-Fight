@@ -7,22 +7,32 @@ var score
 const Scroll_Speed : int = 4
 var screen_size : Vector2i
 var ground_height : int
+var velocity
 
 # Called when the enters the scene tree for the first time.
-
+@onready var score_label = $CanvasLayer/Score
 func _ready():
 	screen_size = get_window().size
 	new_game()
 	
 
+func update_score_label():
+	if score_label:
+		score_label.text = "Score: %d" % score
+	
+
 	
 func new_game():
-	# reset variables
 	game_running = false
 	game_over = false
 	score = 0
 	scroll = 0
 	$Ship.reset()
+	update_score_label()
+	
+	
+	
+	
 	
 func _Tastenabfrage(delta):
 	pass
@@ -32,6 +42,11 @@ func start_game():
 	game_running = true
 	$Ship.flying = true
 	$Ship.ship()
+
+
+
+
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_Tastenabfrage(delta)
@@ -43,6 +58,8 @@ func _process(delta):
 			# move ground node
 			$ground.position.x = -scroll
 			
+			
+
 
 func check_top():
 	if $Ship.position.y < 0:

@@ -6,6 +6,7 @@ const Ship_Speed: int = -500
 var flying: bool = false
 var falling: bool = false
 const Start_Pos = Vector2(100, 200)
+var score
 
 var projectile_path = preload("res://Scenes/projectile.tscn")
 
@@ -59,9 +60,22 @@ func reload_scene():
 		
 func ship():
 	velocity.y = Ship_Speed
+	
+func _HitEnemy(delta):
+	var num = get_slide_collision_count()
+	for i in range(num):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+
+		# Spieler verliert bei Kollision mit Gegner
+		if collider and collider.is_in_group("enemies") and not parent.game_over:
+			print("Ship getroffen von:", collider.name)
+			parent.stop_game()
+			break
 
 func fire():
 	var projectile = projectile_path.instantiate()
 	projectile.look_at(get_global_mouse_position())
 	projectile.pos=$Node2D.global_position
 	get_parent().add_child(projectile)
+	

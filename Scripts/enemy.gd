@@ -9,7 +9,16 @@ func _process(delta):
 	if position.x < -800:  
 		queue_free()
 
-func on_hit():
+func on_hit() -> bool:
 	treffer += 1
 	if treffer >=2:
 		queue_free()
+		return true
+	return false
+	
+
+	treffer += 1
+	if treffer >= 2:
+		queue_free()  # Gegner zerstören
+		return true   # Rückmeldung: Gegner wurde zerstört
+	return false  # Gegner lebt noch
