@@ -14,6 +14,8 @@ func _ready():
 	screen_size = get_window().size
 	new_game()
 	
+
+	
 func new_game():
 	# reset variables
 	game_running = false

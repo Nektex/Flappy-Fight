@@ -5,7 +5,7 @@ const Max_Vel: int = 600
 const Ship_Speed: int = -500
 var flying: bool = false
 var falling: bool = false
-const Start_Pos = Vector2(100, 100)
+const Start_Pos = Vector2(100, 200)
 
 var projectile_path = preload("res://Scenes/projectile.tscn")
 
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 			var collider = collision.get_collider()
 			if collider and collider.is_in_group("enemies") and not parent.game_over:
 				parent.game_over = true
-				print("Ship zerstört")
+				print("Ship zerstört", collider.name)
 				call_deferred("reload_scene")
 				break
 	else:

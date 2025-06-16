@@ -6,10 +6,16 @@ extends Node2D
 @export var min_interval: float = 0.5     # minimale Spawnrate
 @export var difficulty_rise_rate: float = 0.05  # alle X Sekunden wird es schwerer
 
+@onready var main_game = get_tree().current_scene  # Hauptscript Referenz
+
+
 var spawn_timer: float = 0.0
 var elapsed_time: float = 0.0
 
 func _process(delta):
+	if not main_game.game_running:
+		return
+	
 	elapsed_time += delta
 	spawn_timer += delta
 
