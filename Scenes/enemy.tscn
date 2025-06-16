@@ -73,6 +73,8 @@ height = 28.3277
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(1.76506, 1.90625)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("2_1f0kj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

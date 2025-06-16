@@ -42,6 +42,7 @@ func _process(delta):
 				scroll = 0
 			# move ground node
 			$ground.position.x = -scroll
+			
 
 func check_top():
 	if $Ship.position.y < 0:
@@ -52,6 +53,8 @@ func stop_game():
 	$Ship.flying = false
 	game_running = false
 	game_over = true
+	
+	
 	
 func shit_hit():
 	pass

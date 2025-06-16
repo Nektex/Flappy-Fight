@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://6hviakteymu3"]
+
+[node name="Pos" type="Node2D"]
+position = Vector2(400, -4)
+
+[node name="BulletPosition" type="Marker2D" parent="."]
+position = Vector2(27, 0)
