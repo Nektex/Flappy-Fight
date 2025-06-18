@@ -8,7 +8,7 @@ func _ready():
 	global_position=pos
 	global_rotation=rota
 
-# projectile.gd
+
 func _physics_process(delta):
 	velocity = Vector2(speed, 0).rotated(dir)
 	move_and_slide()
@@ -25,5 +25,5 @@ func _physics_process(delta):
 						game.score += 1
 						game.update_score_label()
 						print("Score erhöht! Neuer Score:", game.score)
-			queue_free()  # Projektil verschwindet nach dem Treffer
+			queue_free()  
 			break

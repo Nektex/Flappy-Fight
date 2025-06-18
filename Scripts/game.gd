@@ -9,7 +9,7 @@ var screen_size : Vector2i
 var ground_height : int
 var velocity
 
-# Called when the enters the scene tree for the first time.
+
 @onready var score_label = $CanvasLayer/Score
 func _ready():
 	screen_size = get_window().size
@@ -47,15 +47,15 @@ func start_game():
 
 
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	_Tastenabfrage(delta)
 	if game_running:
 			scroll += Scroll_Speed
-			# reset scroll
+			
 			if scroll >= screen_size.x:
 				scroll = 0
-			# move ground node
+			
 			$ground.position.x = -scroll
 			
 			

@@ -40,10 +40,8 @@ func _physics_process(delta: float) -> void:
 			set_rotation(deg_to_rad(velocity.y * 0.05))
 			$AnimatedSprite2D.play()
 
-		# Bewegung durchführen
 		move_and_slide()
 
-		# Alle Kollisionen prüfen
 		for i in range(get_slide_collision_count()):
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
@@ -61,17 +59,6 @@ func reload_scene():
 func ship():
 	velocity.y = Ship_Speed
 	
-func _HitEnemy(delta):
-	var num = get_slide_collision_count()
-	for i in range(num):
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-
-		# Spieler verliert bei Kollision mit Gegner
-		if collider and collider.is_in_group("enemies") and not parent.game_over:
-			print("Ship getroffen von:", collider.name)
-			parent.stop_game()
-			break
 
 func fire():
 	var projectile = projectile_path.instantiate()

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed: float = 150.0  # Geschwindigkeit 
-var treffer: int = 0 # Leben mäßig
+@export var speed: float = 150.0  
+var treffer: int = 0 
 
 func _process(delta):
 	position.x -= speed * delta
@@ -16,9 +16,3 @@ func on_hit() -> bool:
 		return true
 	return false
 	
-
-	treffer += 1
-	if treffer >= 2:
-		queue_free()  # Gegner zerstören
-		return true   # Rückmeldung: Gegner wurde zerstört
-	return false  # Gegner lebt noch
