@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bgu2jnkgavwy5" path="res://assets/Characters/IMG-20250612-WA0004.jpg" id="2_tl4hk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4467"]
-size = Vector2(75.7188, 11)
+size = Vector2(50, 11)
 
 [node name="Projectile" type="CharacterBody2D"]
 collision_layer = 4
@@ -17,5 +17,5 @@ scale = Vector2(1, 0.970588)
 texture = ExtResource("2_tl4hk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(76.1406, 0.5)
+position = Vector2(89, 0.5)
 shape = SubResource("RectangleShape2D_d4467")
